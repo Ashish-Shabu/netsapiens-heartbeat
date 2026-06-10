@@ -23,7 +23,6 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -124,7 +123,6 @@ function Footer() {
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/about" className="hover:text-cyan-bright transition">About</Link></li>
             <li><Link to="/services" className="hover:text-cyan-bright transition">Services</Link></li>
-            <li><Link to="/pricing" className="hover:text-cyan-bright transition">Pricing</Link></li>
             <li><Link to="/blog" className="hover:text-cyan-bright transition">Blog</Link></li>
           </ul>
         </div>

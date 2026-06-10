@@ -112,11 +112,28 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function TawkTo() {
+  useEffect(() => {
+    const Tawk_API = (window as any).Tawk_API || {};
+    (window as any).Tawk_API = Tawk_API;
+    (window as any).Tawk_LoadStart = new Date();
+    const s1 = document.createElement("script");
+    const s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = "https://embed.tawk.to/680be29f29a5a6191417a6d9/1ipn6qgq8";
+    s1.charset = "UTF-8";
+    s1.setAttribute("crossorigin", "*");
+    s0?.parentNode?.insertBefore(s1, s0);
+  }, []);
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <TawkTo />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

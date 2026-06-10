@@ -55,7 +55,6 @@ function ServicesPage() {
           <p className="mt-4 text-cool-gray text-lg">If it touches the NetSapiens platform, we probably do it. Tell us what you're trying to ship.</p>
           <div className="mt-7 flex justify-center gap-3 flex-wrap">
             <Link to="/contact" className="btn-cyan btn-cyan-hover">Start a Conversation</Link>
-            <Link to="/pricing" className="inline-flex items-center px-5 py-3 rounded-lg border border-border font-semibold text-navy-deep hover:bg-secondary">See Pricing</Link>
           </div>
         </div>
       </section>
