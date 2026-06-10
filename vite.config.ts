@@ -9,10 +9,10 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: {
-      entry: "server",
-      preset: "vercel", // build for Vercel instead of the default Cloudflare target
-    },
+    server: { entry: "server" },
   },
+  // `nitro` must be set here (not inside tanstackStart) to enable the Nitro build plugin
+  // outside the Lovable sandbox. Without this key, Nitro is skipped entirely on Vercel
+  // builds, producing no server and causing 404 for all routes.
+  nitro: { preset: "vercel" },
 });
