@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 
-function Logo() {
+function Logo({ light }: { light: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-2.5 group">
       <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-electric to-cyan-bright grid place-items-center shadow-[0_8px_20px_-8px_oklch(0.55_0.21_264/0.6)]">
@@ -10,8 +10,10 @@ function Logo() {
         </svg>
       </div>
       <div className="flex flex-col leading-none">
-        <span className="font-bold text-[1.05rem] tracking-tight text-navy-deep">VoIP Support<span className="text-electric">Pro</span></span>
-        <span className="mono-tag text-[0.58rem] text-cool-gray mt-0.5">NetSapiens Specialist</span>
+        <span className={`font-bold text-[1.05rem] tracking-tight ${light ? "text-white" : "text-navy-deep"}`}>
+          VoIP Support<span className="text-cyan-bright">Pro</span>
+        </span>
+        <span className={`mono-tag text-[0.58rem] mt-0.5 ${light ? "text-white/55" : "text-cool-gray"}`}>NetSapiens Specialist</span>
       </div>
     </Link>
   );
@@ -36,6 +38,8 @@ function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const light = !scrolled;
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -45,14 +49,16 @@ function Nav() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">
-        <Logo />
+        <Logo light={light} />
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="px-3.5 py-2 text-[0.92rem] font-medium text-navy-deep/80 hover:text-navy-deep rounded-md transition-colors"
-              activeProps={{ className: "text-navy-deep bg-secondary" }}
+              className={`px-3.5 py-2 text-[0.92rem] font-medium rounded-md transition-colors ${
+                light ? "text-white/80 hover:text-white" : "text-navy-deep/80 hover:text-navy-deep"
+              }`}
+              activeProps={{ className: light ? "text-white bg-white/10" : "text-navy-deep bg-secondary" }}
               activeOptions={{ exact: item.to === "/" }}
             >
               {item.label}
@@ -64,7 +70,7 @@ function Nav() {
         </div>
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 rounded-md text-navy-deep"
+          className={`lg:hidden p-2 rounded-md ${light ? "text-white" : "text-navy-deep"}`}
           aria-label="Toggle menu"
         >
           <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
