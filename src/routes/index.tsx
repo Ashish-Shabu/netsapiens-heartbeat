@@ -217,22 +217,58 @@ function HomePage() {
       {/* TESTIMONIALS */}
       <section className="bg-white border-y border-border section-pad">
         <div className="container-x">
-          <div className="max-w-2xl">
-            <span className="mono-tag text-electric">Client voices</span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-navy-deep">Service providers who built on NetSapiens — with us.</h2>
+          {/* Header row */}
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-navy-deep">Testimonial</h2>
+            <span className="text-electric font-semibold text-base">Hear from Our Satisfied Partners</span>
           </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="w-16 h-0.5 bg-border mb-6" />
+          <p className="text-center text-cool-gray max-w-2xl mx-auto mb-12 text-sm">
+            Here's what VoIP resellers, MSPs, and telecom providers have to say about working with our white-label support team.
+          </p>
+          {/* Cards */}
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { q: "They helped us configure our entire SNAPsolution tenant in days. Our reseller portal went live before our internal deadline.", a: "Marcus Hale", r: "CTO, Northwind Telecom" },
-              { q: "Migration from our legacy switch to NetSapiens was the smoothest port window we've ever run. Zero customer escalations.", a: "Priya Anand", r: "Head of Ops, Vertex Voice" },
-              { q: "Having NetSapiens-only specialists on retainer changed our support SLAs. Tickets close in hours, not days.", a: "Daniel Reyes", r: "Founder, ClearLine UC" },
+              {
+                q: "Partnering with this team has been a game-changer. Our clients never experience downtime, and we get to focus on scaling our business.",
+                a: "Michael R",
+                r: "VoIP Reseller",
+                avatar: "https://i.pravatar.cc/48?img=11",
+              },
+              {
+                q: "Their white-label support is flawless. Our customers think they're speaking directly with our in-house team. Highly recommended!",
+                a: "Sarah L",
+                r: "Managed Service Provider",
+                avatar: "https://i.pravatar.cc/48?img=47",
+              },
+              {
+                q: "From onboarding to ongoing maintenance, they've handled everything smoothly. Incredible expertise!",
+                a: "Philip Deckow",
+                r: "Telecom Distributor",
+                avatar: "https://i.pravatar.cc/48?img=53",
+              },
             ].map((t) => (
-              <div key={t.a} className="rounded-2xl border border-border bg-surface p-7 flex flex-col">
-                <svg className="h-7 w-7 text-electric" fill="currentColor" viewBox="0 0 24 24"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H5.5A1.67 1.67 0 0 1 7.17 9.5V6Zm10 0a5.17 5.17 0 0 0-5.17 5.17V18h6.83v-6.83H15.5A1.67 1.67 0 0 1 17.17 9.5V6Z"/></svg>
-                <p className="mt-4 text-navy-deep/90 leading-relaxed">{t.q}</p>
-                <div className="mt-6 pt-5 border-t border-border">
-                  <div className="font-semibold text-navy-deep">{t.a}</div>
-                  <div className="text-sm text-cool-gray">{t.r}</div>
+              <div key={t.a} className="rounded-xl border border-border bg-white p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                {/* Stars + badge */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-[0.7rem] font-semibold tracking-widest uppercase text-electric border border-electric/30 rounded px-2 py-0.5">Testimonial</span>
+                </div>
+                {/* Quote */}
+                <p className="text-navy-deep/85 leading-relaxed italic flex-1 text-sm">"{t.q}"</p>
+                {/* Author */}
+                <div className="mt-6 flex items-center gap-3">
+                  <img src={t.avatar} alt={t.a} className="h-10 w-10 rounded-full object-cover" loading="lazy" />
+                  <div>
+                    <div className="font-semibold text-navy-deep text-sm">{t.a}</div>
+                    <div className="text-xs text-cool-gray">{t.r}</div>
+                  </div>
                 </div>
               </div>
             ))}
